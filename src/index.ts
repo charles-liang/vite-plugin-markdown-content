@@ -6,7 +6,10 @@ import type {GrayMatterFile, Input} from 'gray-matter';
 export default function MarkdownContextPlugin() {
   return {
     name: 'markdown-context',
-    apply: 'build',
+    apply: (_config: any, _env: any) => {
+    // determine whether to apply the plugin based on config and env
+      return true; // or false
+    },
     configResolved(config: { command: string; }) {
       if (config.command === 'build' || config.command === 'serve') {
         const markdownDir = path.resolve(__dirname, './context');
