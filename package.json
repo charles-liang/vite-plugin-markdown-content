@@ -1,0 +1,28 @@
+{
+  "name": "vite-plugin-markdown-context",
+  "version": "0.01",
+  "description": "A Vite plugin that generates a website context from Markdown files",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charles-liang/vite-plugin-markdown-context.git"
+  },
+  "author": "charles-liang <charles.xy.liang@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vite-plugin",
+    "markdown",
+    "directory",
+    "vite"
+  ],
+  "bugs": {
+    "url": "https://github.com/harles-liang/vite-plugin-markdown-context/issues"
+  },
+  "homepage": "https://github.com/harles-liang/vite-plugin-markdown-context#readme",
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  } 
+}
