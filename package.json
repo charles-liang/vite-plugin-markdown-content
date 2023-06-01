@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-markdown-context",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A Vite plugin that generates a website context from Markdown files",
   "main": "dist/index.js",
   "repository": {
@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/harles-liang/vite-plugin-markdown-context#readme",
   "dependencies": {
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "vite": "^4.0.0"
   },
   "type": "module",
   "engines": {

@@ -4,8 +4,12 @@
       "src"
     ],
     "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext",
+      "rootDir": "src",
       "outDir": "dist",
       "declaration": true,
-      "removeComments": false,
+      "removeComments": true,
+      "moduleResolution": "node"
     },
   }

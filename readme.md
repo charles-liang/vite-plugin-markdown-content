@@ -13,6 +13,16 @@ yarn add vite-plugin-markdown-context -D
 
 add this plugin to `vite.config.js`
 
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react' // not require 
+import MarkdownContextPlugin from 'vite-plugin-markdown-context';
+
+export default defineConfig({
+  plugins: [
+    react(), // not require
+    MarkdownContextPlugin()],
+})
+
 ##
 
 ## License
