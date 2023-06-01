@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-markdown-context",
-  "version": "0.01",
+  "version": "0.0.1",
   "description": "A Vite plugin that generates a website context from Markdown files",
   "main": "dist/index.js",
   "repository": {
@@ -11,8 +11,9 @@
   "license": "MIT",
   "scripts": {
     "test": "vitest",
+    "test:ci": "vitest run",
     "build": "tsc",
-    "ci": "npm install && npm run test && npm run build"
+    "ci": "npm install && npm run test:ci && npm run build"
   },
   "keywords": [
     "vite-plugin",

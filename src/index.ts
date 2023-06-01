@@ -1,16 +1,17 @@
 import * as fs from 'node:fs'
 import * as path from 'node:path';
 import { scanMarkdownFiles } from './markdown-context'
+import type {GrayMatterFile, Input} from 'gray-matter';
 
 export default function MarkdownContextPlugin() {
   return {
     name: 'markdown-context',
     apply: 'build',
-    configResolved(config) {
+    configResolved(config: { command: string; }) {
       if (config.command === 'build' || config.command === 'serve') {
         const markdownDir = path.resolve(__dirname, './context');
         const outputFilePath = path.resolve(__dirname, './public/contexts.json');
-        const directory = {};
+        const directory: Record<string, GrayMatterFile<Input>> = {};
         
       
         scanMarkdownFiles(markdownDir, (file, frontMatter) => {
