@@ -1,8 +1,9 @@
 {
-  "name": "vite-plugin-markdown-context",
-  "version": "0.0.3",
+  "name": "vite-plugin-markdown-content",
+  "version": "0.0.1",
   "description": "A Vite plugin that generates a website context from Markdown files",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/charles-liang/vite-plugin-markdown-context.git"
@@ -12,7 +13,7 @@
   "scripts": {
     "test": "vitest",
     "test:ci": "vitest run",
-    "build": "tsc",
+    "build": "tsup",
     "ci": "npm install && npm run test:ci && npm run build"
   },
   "keywords": [
@@ -27,6 +28,7 @@
   "homepage": "https://github.com/harles-liang/vite-plugin-markdown-context#readme",
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "mock-fs": "^5.2.0",
     "vite": "^4.0.0"
   },
   "type": "module",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.3",
+    "tsup": "^6.7.0",
     "typescript": "^4.5.2",
     "vitest": "^0.31.4"
   }

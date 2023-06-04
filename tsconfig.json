@@ -1,8 +1,7 @@
 {
     "extends": "@tsconfig/node14/tsconfig.json",
-    "include": [
-      "src"
-    ],
+    "include": ["src/**/*", "src/types"],
+    "exclude": ["node_modules"],
     "compilerOptions": {
       "target": "ESNext",
       "module": "ESNext",
