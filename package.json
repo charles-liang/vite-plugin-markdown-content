@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "description": "A Vite plugin that generates a website context from Markdown files",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./module": "./dist/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/charles-liang/vite-plugin-markdown-context.git"

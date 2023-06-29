@@ -3,7 +3,7 @@ import { scanMarkdownFiles } from './markdown-context.js'
 import { PluginOptions } from './types/options'
 
 
-export default function MarkdownContextPlugin(options: PluginOptions): Plugin {
+export default function MarkdownContextPlugin(options?: PluginOptions): Plugin {
   let config: { command: string, root: string };
   return {
     name: 'markdown-context',

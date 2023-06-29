@@ -103,7 +103,31 @@ export function scanMarkdownFiles(root: string, options: PluginOptions = default
     fs.writeFileSync(outputFilePath, JSON.stringify(frontMatter), 'utf-8');
   };
 
-  scanFiles(path.join(root, options.input.directory), options.input.fileExtension, handleMarkdownFile);
+
+    const handleSpecialMarkdownFile = (fileDetails: FileDetails) => {
+      // Read the content of the file
+      const outputDir =  path.join(path.dirname(fileDetails.absolutePath), "..", "layout")
+      if (options.output.autoCleanUp) {
+        if (fs.existsSync(outputDir)) {
+          fs.rmdirSync(outputDir, { recursive: true });
+        }
+      }
+
+      // ensure output directory exists
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+      }
+
+
+      const content = fs.readFileSync(fileDetails.absolutePath, 'utf-8');
+      const frontMatter = matter(content);
+
+      // Generate a JSON file with the same name
+      const jsonFilePath = path.join(outputDir, `${path.basename(fileDetails.filename, '.md')}.json`);
+      fs.writeFileSync(jsonFilePath, JSON.stringify(frontMatter), 'utf-8');
+    };
+
+  scanFiles(path.join(root, options.input.directory), options.input.fileExtension, handleMarkdownFile, handleSpecialMarkdownFile);
 
   // Write all metadata to a JSON file
   const metadataFilePath = path.join(options.output.directory, 'contents.json');
@@ -117,14 +141,14 @@ function generateId() {
 
 
 
-export function scanFiles(root: string, fileExtension: string = '.md', fileHandler: (file: FileDetails) => void): void {
+export function scanFiles(root: string, fileExtension: string = '.md', fileHandler: (file: FileDetails) => void, handleSpecialMarkdownFile: (file: FileDetails) => void): void {
   function scan(dir: string) {
     fs.readdirSync(dir).forEach(file => {
       const absolutePath = path.join(dir, file);
       const relativePath = path.relative(root, dir);
-      if (fs.statSync(absolutePath).isDirectory()) {
-        scan(absolutePath);
-      } else if (path.extname(absolutePath) === fileExtension) {
+      if (path.basename(file).startsWith('_')) {
+        handleSpecialMarkdownFile(new FileDetails(root, relativePath, file));
+      } else {
         fileHandler(new FileDetails(root, relativePath, file));
       }
     });
